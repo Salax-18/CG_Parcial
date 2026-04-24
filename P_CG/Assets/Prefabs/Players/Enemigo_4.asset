@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   nombrePersonaje: Daga Oscura
   icono: {fileID: 0}
-  vidaMaxima: 100
+  vidaMaxima: 50
   defensa: 21
   fuerza: 18
   ataques:
