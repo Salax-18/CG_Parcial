@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement; // Necesario para cambiar de escena
 public class EnemigoInteraccion : MonoBehaviour, IInteractable
 {
     [Header("Configuración de Escena")]
-    public string nombreEscenaCombate = "PruebaCombate";
+    public string nombreEscenaCombate = "CCombateBosque";
 
     public void Interact()
     {
