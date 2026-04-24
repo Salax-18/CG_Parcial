@@ -147,7 +147,7 @@ public class BatallaFinalControl : CombateControl
         if (cantidadEnemigos <= 0)
         {
             Debug.Log("=== BATALLA FINAL GANADA ===");
-            SceneManager.LoadScene("Victoria");
+            SceneManager.LoadScene("Tesoro");
             return;
         }
 
