@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   nombrePersonaje: Helena
   icono: {fileID: 0}
-  vidaMaxima: 50
+  vidaMaxima: 45
   defensa: 35
   fuerza: 18
   ataques:

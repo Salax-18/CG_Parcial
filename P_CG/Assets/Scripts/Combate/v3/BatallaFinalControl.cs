@@ -10,6 +10,7 @@ public class BatallaFinalControl : CombateControl
     private bool HelenaViva()
     {
         if (cantidadEnemigos <= 1) return false;
+        if (enemigos.transform.childCount <= 1) return false;  // ← este es el fix
         Transform t = enemigos.transform.GetChild(IDX_HELENA);
         return t != null && t.gameObject != null;
     }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   nombrePersonaje: Lupus
   icono: {fileID: 0}
-  vidaMaxima: 100
+  vidaMaxima: 75
   defensa: 82
   fuerza: 20
   ataques:
