@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class CombateControl : MonoBehaviour
 {
@@ -277,6 +278,7 @@ public class CombateControl : MonoBehaviour
         if (cantidadEnemigos <= 0)
         {
             Debug.Log("=== COMBATE TERMINADO ===");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             return;
         }
 
