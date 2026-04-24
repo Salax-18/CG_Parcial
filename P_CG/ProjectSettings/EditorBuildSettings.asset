@@ -29,6 +29,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PruebaFinalCombate 1.unity
     guid: a3ce801cc9a37db4299effb5c389a3ac
+  - enabled: 1
+    path: Assets/Scenes/Tesoro.unity
+    guid: 96d5f0fcfe6d8f941bbd73333f794448
+  - enabled: 1
+    path: Assets/Scenes/Final_Game.unity
+    guid: c88ab9538ef4ecd40a44847c0578494f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
