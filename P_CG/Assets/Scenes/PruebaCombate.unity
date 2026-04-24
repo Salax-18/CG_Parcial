@@ -2793,7 +2793,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 3adc5fdea8c1b57459b75076a3f8facf, type: 2}
   vidaActual: 0
   tipo: 0
-  barraVida: {fileID: 0}
+  barraVida: {fileID: 573502976}
 --- !u!1 &1083592940
 GameObject:
   m_ObjectHideFlags: 0
@@ -3509,7 +3509,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 7a5a517ae5fe86747bf9fc5a95da295d, type: 2}
   vidaActual: 0
   tipo: 0
-  barraVida: {fileID: 0}
+  barraVida: {fileID: 574619477}
 --- !u!1 &1406853698
 GameObject:
   m_ObjectHideFlags: 0
@@ -5094,7 +5094,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 5175f39c3045b96458257e307bad8ba0, type: 2}
   vidaActual: 0
   tipo: 0
-  barraVida: {fileID: 0}
+  barraVida: {fileID: 1718818711}
 --- !u!1 &1859524091
 GameObject:
   m_ObjectHideFlags: 0
