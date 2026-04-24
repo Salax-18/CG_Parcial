@@ -16,9 +16,15 @@ public class Inventario : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+
+            // Cambiamos 'gameObject' por 'transform.root.gameObject' 
+            // para que se lleve a todo el PADRE (SISTEMA_GLOBAL) y sus hijos (Canvas).
+            DontDestroyOnLoad(transform.root.gameObject);
         }
-        else Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Update()
