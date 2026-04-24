@@ -6,7 +6,7 @@ public class Inventario : MonoBehaviour
     public static Inventario Instance;
 
     [Header("Configuración UI")]
-    public GameObject panelInventario; // Arrastra tu panel de UI aquí
+    public GameObject panelInventario;
     private bool estaAbierto = false;
 
     private Dictionary<string, int> items = new Dictionary<string, int>();
@@ -23,13 +23,14 @@ public class Inventario : MonoBehaviour
 
     private void Update()
     {
-        // Detecta la tecla Q para abrir/cerrar
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (panelInventario != null)
             {
                 estaAbierto = !estaAbierto;
                 panelInventario.SetActive(estaAbierto);
+                // Si se abre, actualizamos los números
+                if (estaAbierto) RefrescarUI();
             }
         }
     }
@@ -38,16 +39,33 @@ public class Inventario : MonoBehaviour
     {
         var (nombre, cantidad) = ParsearItem(nombreItem);
 
-        if (items.ContainsKey(nombre))
-            items[nombre] += cantidad;
-        else
-            items[nombre] = cantidad;
+        // Limpiamos el nombre para evitar errores de mayúsculas
+        string clave = nombre.ToLower().Trim();
 
-        Debug.Log($"Inventario: +{cantidad} {nombre} (total: {items[nombre]})");
+        if (items.ContainsKey(clave))
+            items[clave] += cantidad;
+        else
+            items[clave] = cantidad;
+
+        Debug.Log($"Inventario: +{cantidad} {clave} (total: {items[clave]})");
+
+        // Si el panel está abierto mientras recoges, actualiza el número al instante
+        if (estaAbierto) RefrescarUI();
     }
 
-    public int ObtenerCantidad(string nombre) => items.ContainsKey(nombre) ? items[nombre] : 0;
-    public Dictionary<string, int> ObtenerTodo() => items;
+    public void RefrescarUI()
+    {
+        if (panelInventario == null) return;
+        // Busca todos los scripts MochilaSlot en los hijos del panel y los actualiza
+        MochilaSlot[] slots = panelInventario.GetComponentsInChildren<MochilaSlot>(true);
+        foreach (MochilaSlot slot in slots) slot.ActualizarSlot();
+    }
+
+    public int ObtenerCantidad(string nombre)
+    {
+        string clave = nombre.ToLower().Trim();
+        return items.ContainsKey(clave) ? items[clave] : 0;
+    }
 
     private (string nombre, int cantidad) ParsearItem(string input)
     {
