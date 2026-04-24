@@ -470,10 +470,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   musicaMenu: {fileID: 8300000, guid: d06be0f50dec2ae4ea21d2f80e472022, type: 3}
   musicaTavern: {fileID: 8300000, guid: 0fafddf12fe912746822fa7a5b55ca74, type: 3}
-  musicaBosque: {fileID: 0}
-  musicaCombate: {fileID: 0}
+  musicaBosque: {fileID: 8300000, guid: 0fafddf12fe912746822fa7a5b55ca74, type: 3}
+  musicaCombate: {fileID: 8300000, guid: b0e96fdcaea018b4cab1a833a137a122, type: 3}
   musicaBoss: {fileID: 8300000, guid: 5567738d395a5b1439688b915d1b8fa2, type: 3}
-  musicaTesoro: {fileID: 0}
+  musicaTesoro: {fileID: 8300000, guid: be659a2de1600e042b9242511c668aa9, type: 3}
 --- !u!82 &2031976885
 AudioSource:
   m_ObjectHideFlags: 0
