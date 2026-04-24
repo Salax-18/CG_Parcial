@@ -41,23 +41,69 @@ public class Character : MonoBehaviour
     }
 
 
+    private bool lupusSeCuro = false;
+
     public void Damage(int damage)
     {
         int dañoFinal = Mathf.RoundToInt(damage * (1f - data.defensa / 1000f));
         vidaActual -= dañoFinal;
-        vidaActual = Mathf.Max(vidaActual, 0); // nunca menor a 0
+        vidaActual = Mathf.Max(vidaActual, 0);
         Debug.Log($"{data.nombrePersonaje} recibió {damage} → {dañoFinal} tras defensa ({data.defensa}%)");
 
-        barraVida?.Actualizar(vidaActual, data.vidaMaxima); // actualizar barra
+        // Curación de Lupus — solo una vez cuando baja de 15
+        if (tipo && combateControl is BatallaFinalControl && !lupusSeCuro)
+        {
+            int indiceEsteEnemigo = -1;
+            for (int i = 0; i < combateControl.enemigos.transform.childCount; i++)
+            {
+                if (combateControl.enemigos.transform.GetChild(i).gameObject == gameObject)
+                {
+                    indiceEsteEnemigo = i;
+                    break;
+                }
+            }
+
+            Debug.Log($"Chequeo curación — índice: {indiceEsteEnemigo} | vida: {vidaActual} | lupusSeCuro: {lupusSeCuro}");
+
+            if (indiceEsteEnemigo == 0 && vidaActual < 15 && vidaActual > 0)
+            {
+                lupusSeCuro = true;
+                vidaActual += 10;
+                vidaActual = Mathf.Min(vidaActual, data.vidaMaxima);
+                Debug.Log($"Lupus se curó — vida actual: {vidaActual}");
+                CombateUI.Instance.MostrarResultado("⚡ <b>¡El gran Hechicero ha hecho trampa!</b> ⚡\nLupus recuperó 10 puntos de vida");
+                StartCoroutine(OcultarResultadoTrasEspera());
+            }
+        }
+
+        barraVida?.Actualizar(vidaActual, data.vidaMaxima);
         StartCoroutine(AnimDamage());
 
         if (vidaActual <= 0)
         {
             if (tipo) combateControl.cantidadEnemigos--;
             else combateControl.cantidadPlayers--;
+
             if (tipo && data != null) SoltarLoot();
+
+            if (tipo && combateControl is BatallaFinalControl)
+            {
+                Transform tHelena = combateControl.enemigos.transform.GetChild(1);
+                if (tHelena != null && tHelena.gameObject != null)
+                {
+                    combateControl.cantidadEnemigos--;
+                    Destroy(tHelena.gameObject);
+                }
+            }
+
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator OcultarResultadoTrasEspera()
+    {
+        yield return new WaitForSecondsRealtime(2.5f);
+        CombateUI.Instance.OcultarResultado();
     }
 
     public int TirarAtaque(int indiceAtaque)
