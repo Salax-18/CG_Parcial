@@ -19,7 +19,14 @@ public class FinJDelJuego : MonoBehaviour
         pantallaInicial.SetActive(false);
         videoScreen.gameObject.SetActive(true);
         videoPlayer.Play();
-    }
+     
+   
+        Debug.Log("Botón clickeado!");
+        pantallaInicial.SetActive(false);
+        videoScreen.gameObject.SetActive(true);
+        videoPlayer.Play();
+    
+}
 
     void OnVideoTerminado(VideoPlayer vp)
     {
