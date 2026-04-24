@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bosque.unity
     guid: fb7fa059be338054a85dbcb013e49e45
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PruebaCombate.unity
     guid: c9d613212f8cf4a4aa87a6abbda91e8e
   - enabled: 1
